@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "openzeppelin-contracts/contracts/access/Ownable.sol";
+import "openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import {console2} from "forge-std/Test.sol";
 
 interface INounsToken {
     function tokenURI(uint256 tokenId) external view returns (string memory);
@@ -17,10 +18,10 @@ contract N900UNS is ERC721Enumerable, Ownable {
         ERC721("N900UNS", "N900UNS")
         Ownable(initialOwner) 
     {
-        nounsToken = INounsToken(0x99265CE0983aab76F5a3789663FDD887dE66638A);
-        safeMint(initialOwner, 0);
-        // 0x99265CE0983aab76F5a3789663FDD887dE66638A
-        //0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03
+      nounsToken = INounsToken(0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03);
+      safeMint(initialOwner, 0);
+      // 0x99265CE0983aab76F5a3789663FDD887dE66638A goerli
+      // 0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03 mainnet
     }
 
     function tokenURI(uint256 tokenId) override public view returns (string memory){
