@@ -9,7 +9,7 @@ interface INounsToken {
 }
 
 contract N900UNS is ERC721Enumerable, Ownable {
-   uint256 public mintFee = 0.01 ether;
+   uint256 public mintFee = 0.00899 ether;
    uint256 public MAX_SUPPLY = 900;
    INounsToken private nounsToken;
 
@@ -41,5 +41,10 @@ contract N900UNS is ERC721Enumerable, Ownable {
       uint256 tokenId = totalSupply();
       require(tokenId < MAX_SUPPLY, "Supply limit reached.");
       safeMint(msg.sender, tokenId);
+   }
+
+   function withdraw() public onlyOwner {
+      uint256 balance = address(this).balance;
+      payable(owner()).transfer(balance);
    }
 }
